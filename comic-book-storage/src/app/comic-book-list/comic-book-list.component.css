@@ -1,3 +1,23 @@
-img {
+:host /deep/ img {
   max-height: 95px;
+}
+
+:host /deep/ .view-comic {
+  cursor: pointer;
+  text-align: center;
+  font-size: 1.05em;
+}
+
+:host /deep/ .table-bordered td {
+  vertical-align: middle;
+}
+
+:host /deep/ .table-bordered td:first-child {
+  cursor: pointer;
+  color: royalblue;
+  font-weight: bold;
+}
+
+:host /deep/ .table-bordered td:first-child:hover {
+  text-decoration: underline;
 }

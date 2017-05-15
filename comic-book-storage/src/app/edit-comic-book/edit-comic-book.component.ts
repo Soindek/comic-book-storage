@@ -15,6 +15,7 @@ export class EditComicBookComponent implements OnInit {
   id: number;
   editMode = false;
   comicForm: FormGroup;
+  publicationDate: Date;
   isMultiple = false;
   writers = ['Al Feldstein', 'Dennis O\'Neil', 'Edmond Hamilton', 'Gardner Fox', 'Jack Kirby', 'Jim Shooter', 'Joe Gill',
              'John Byrne', 'Otto Binder', 'Roy Thomas', 'Stan Lee', 'Steve Ditko'];
@@ -74,7 +75,6 @@ export class EditComicBookComponent implements OnInit {
     const form = this.comicForm;
 
     for (const field in this.formErrors) {
-      // clear previous error message (if any)
       this.formErrors[field] = '';
       const control = form.get(field);
 
@@ -85,6 +85,10 @@ export class EditComicBookComponent implements OnInit {
         }
       }
     }
+  }
+
+  publicationDateChanged() {
+    this.comicForm.get('publicationDate').setValue(this.publicationDate.toLocaleDateString('en-GB'));
   }
 
   onSubmit() {

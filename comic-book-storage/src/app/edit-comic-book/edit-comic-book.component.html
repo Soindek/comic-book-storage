@@ -45,11 +45,10 @@
           placeholder="DD/MM/YYYY"
           formControlName="publicationDate"
           required>
-          <!--*ngIf="dt">{{ getDate() | date:'fullDate'}}-->
         <div *ngIf="formErrors.publicationDate" class="alert alert-danger">
           {{ formErrors.publicationDate }}
         </div>
-         <app-date-picker></app-date-picker>
+        <datepicker [(ngModel)]="publicationDate" (ngModelChange)="publicationDateChanged()" [ngModelOptions]="{standalone: true}"></datepicker>
       </div>
     </div>
 
