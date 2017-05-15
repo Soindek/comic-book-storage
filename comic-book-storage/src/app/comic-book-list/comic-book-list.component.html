@@ -1,0 +1,48 @@
+<div class="table-responsive">
+  <table
+    class="table table-hover"
+    [mfData]="comics"
+    #mf="mfDataTable"
+    [mfRowsOnPage]="rowsOnPage"
+    [(mfSortBy)]="sortBy"
+    [(mfSortOrder)]="sortOrder">
+
+    <thead>
+      <tr>
+        <th><mfDefaultSorter by="id">#</mfDefaultSorter></th>
+        <th><mfDefaultSorter by="title">Cover</mfDefaultSorter></th>
+        <th><mfDefaultSorter by="coverUrl">Title</mfDefaultSorter></th>
+        <th><mfDefaultSorter by="publicationDate">Publication</mfDefaultSorter></th>
+        <th><mfDefaultSorter by="genre">Genre</mfDefaultSorter></th>
+        <th><mfDefaultSorter by="excerpt">Excerpt</mfDefaultSorter></th>
+        <th><mfDefaultSorter by="writtenBy">Written By</mfDefaultSorter></th>
+        <th><mfDefaultSorter by="publisher">Publisher</mfDefaultSorter></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr
+        *ngFor="let comic of comics"
+        [routerLink]="['/detail', comic.id]"
+        style="cursor: pointer;">
+        <td scope="row">{{ comic.id }}</td>
+        <td><img src="{{ comic.coverUrl }}" alt="{{ comic.title }} Cover"></td>
+        <td>{{ comic.title }}</td>
+        <td>{{ comic.publicationDate }}</td>
+        <td>{{ comic.genre }}</td>
+        <td>{{ comic.excerpt }}</td>
+        <td>{{ comic.writtenBy }}</td>
+        <td>{{ comic.publisher }}</td>
+      </tr>
+    </tbody>
+
+    <!--<tfoot>
+      <tr>
+        <td colspan="5">
+          <mfBootstrapPaginator [rowsOnPageSet]="[5,10,15]"></mfBootstrapPaginator>
+        </td>
+      </tr>
+    </tfoot>-->
+  </table>
+</div>
+

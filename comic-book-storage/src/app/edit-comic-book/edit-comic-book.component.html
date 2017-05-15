@@ -1,0 +1,137 @@
+
+  <form [formGroup]="comicForm" (ngSubmit)="onSubmit()" class="form-horizontal">
+
+    <div class="form-group">
+      <label for="title" class="col-sm-2 control-label">Comic title *</label>
+      <div class="col-sm-10">
+        <input
+          type="text"
+          class="form-control"
+          id="title"
+          placeholder="Batman and Robin"
+          formControlName="title"
+        required>
+        <div *ngIf="formErrors.title" class="alert alert-danger">
+          {{ formErrors.title }}
+        </div>
+      </div>
+      <input type="hidden" formControlName="id">
+    </div>
+
+    <div class="form-group">
+      <label for="coverUrl" class="col-sm-2 control-label">Cover photo *</label>
+      <div class="col-sm-10">
+        <input
+          type="text"
+          class="form-control"
+          id="coverUrl"
+          placeholder="https://domain.com/cover.png"
+          formControlName="coverUrl"
+          required
+          #coverUrl>
+        <div *ngIf="formErrors.coverUrl" class="alert alert-danger">
+          {{ formErrors.coverUrl }}
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="publicationDate" class="col-sm-2 control-label">Publication *</label>
+      <div class="col-sm-10">
+        <input
+          type="text"
+          class="form-control"
+          id="publicationDate"
+          placeholder="DD/MM/YYYY"
+          formControlName="publicationDate"
+          required>
+          <!--*ngIf="dt">{{ getDate() | date:'fullDate'}}-->
+        <div *ngIf="formErrors.publicationDate" class="alert alert-danger">
+          {{ formErrors.publicationDate }}
+        </div>
+         <app-date-picker></app-date-picker>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="writers" class="col-sm-2 control-label">Writers *</label>
+      <div class="col-sm-10">
+        <select
+          [multiple]="true"
+          class="form-control"
+          id="writers"
+          formControlName="writers"
+          required>
+          <option *ngFor="let writer of writers" >{{writer}}</option>
+        </select>
+        <div *ngIf="formErrors.writers" class="alert alert-danger">
+          {{ formErrors.writers }}
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="publisher" class="col-sm-2 control-label">Publisher</label>
+      <div class="col-sm-10">
+        <select
+          class="form-control"
+          id="publisher"
+          formControlName="publisher">
+            <option>Charlton Comics</option>
+            <option>DC Comics</option>
+            <option>Image Comics</option>
+            <option>Marvel Comics</option>
+            <option>Charlton Comics</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="genre" class="col-sm-2 control-label">Genre</label>
+      <div class="col-sm-10">
+        <input
+          type="text"
+          class="form-control"
+          id="genre"
+          placeholder="Superhero"
+          formControlName="genre">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="excerpt" class="col-sm-2 control-label">Excerpt</label>
+      <div class="col-sm-10">
+        <textarea
+          class="form-control"
+          rows="3" id="excerpt"
+          placeholder="Excerpt from comic book..."
+          formControlName="excerpt"></textarea>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <button
+          type="submit"
+          class="btn btn-success"
+          [disabled]="!comicForm.valid">POW!</button>
+
+        <button
+          type="button"
+          class="btn btn-default"
+          (click)="goBack()">Cancel</button>
+
+        <button
+          type="button"
+          class="btn btn-danger"
+          (click)="delComic()">Delete</button>
+
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12">
+        <img [src]="coverUrl.value" class="img-responsive">
+      </div>
+    </div>
+
+  </form>

@@ -1,6 +1,6 @@
 import { browser, element, by } from 'protractor';
 
-export class ComicBooksStoragePage {
+export class ComicBookStoragePage {
   navigateTo() {
     return browser.get('/');
   }

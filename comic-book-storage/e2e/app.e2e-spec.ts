@@ -1,10 +1,10 @@
-import { ComicBooksStoragePage } from './app.po';
+import { ComicBookStoragePage } from './app.po';
 
-describe('comic-books-storage App', () => {
-  let page: ComicBooksStoragePage;
+describe('comic-book-storage App', () => {
+  let page: ComicBookStoragePage;
 
   beforeEach(() => {
-    page = new ComicBooksStoragePage();
+    page = new ComicBookStoragePage();
   });
 
   it('should display message saying app works', () => {
